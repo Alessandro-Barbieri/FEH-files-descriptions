@@ -48,13 +48,16 @@ instances:
   field:
     pos: field_ptr.offset + 0x20
     type: field_definition
+    if: field_ptr.offset != 0
   player_pos:
     pos:  player_pos_ptr.offset + 0x20
     type: map_position
     repeat: expr
     repeat-expr:  player_count.data
+    if: player_pos_ptr.offset != 0
   units:
     pos:  units_ptr.offset + 0x20
     type: unit_data
     repeat: expr
     repeat-expr:  unit_count.data
+    if: units_ptr.offset != 0

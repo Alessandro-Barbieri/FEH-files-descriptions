@@ -1,5 +1,5 @@
 meta:
-  id: srpgweapon
+  id: srpgperson
   file-extension: bin
   imports:
     - file_ptr
@@ -27,7 +27,7 @@ types:
       - id: magic
         type: u8
       - id: skill_list
-        type: obj_list('weapon_class_definition',[0x4f,0x4c,0x66,0x6d,0xeb,0x17,0xba,0xa7])
+        type: obj_list('hero_definition',[0xe1,0xb9,0x3a,0x3c,0x79,0xab,0x51,0xde])
     instances:
       ptr_list:
         type: file_ptr

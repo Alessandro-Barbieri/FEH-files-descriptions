@@ -34,6 +34,7 @@ types:
         pos: ptr_list_offset + 0x20
         repeat: expr
         repeat-expr: ptr_list_length
+        if: ptr_list_offset != 0
       tag_list:
         type: file_tag
         pos: ptr_list_length + ptr_list_offset + 0x20
