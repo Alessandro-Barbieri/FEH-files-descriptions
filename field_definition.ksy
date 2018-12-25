@@ -7,7 +7,7 @@ meta:
   endian: le
 seq:
   - id: id
-    type: crypt_string
+    type: crypt_string('ID')
   - id:  width
     size: 4
     type: xoru4

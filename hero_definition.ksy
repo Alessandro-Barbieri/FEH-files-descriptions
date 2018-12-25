@@ -15,13 +15,13 @@ meta:
   endian: le
 seq:
   - id: id_tag
-    type: crypt_string
+    type: crypt_string('ID')
   - id: roman
-    type: crypt_string
+    type: crypt_string('ID')
   - id:  face_name
-    type: crypt_string
+    type: crypt_string('ID')
   - id: face_name_2
-    type: crypt_string
+    type: crypt_string('ID')
   - id: legendary_ptr
     type: file_ptr
   - id: timestamp
@@ -79,13 +79,13 @@ seq:
   - id: max_stats
     type: stats_tuple
   - id: skills
-    type: crypt_string
+    type: crypt_string('ID')
     repeat: expr
-    repeat-expr: 8 * 14
-#instances:
-#  legendary:
-#    type: legendary_info
-#    pos: legendary_ptr.offset+ 0x20
-#    if: legendary_ptr.offset != 0
-#    repeat: expr
-#    repeat-expr: 1
+    repeat-expr: 5 * 14
+instances:
+  legendary:
+    type: legendary_info
+    pos: legendary_ptr.offset+ 0x20
+    if: legendary_ptr.offset != 0
+    repeat: expr
+    repeat-expr: 1

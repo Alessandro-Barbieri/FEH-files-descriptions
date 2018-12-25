@@ -11,13 +11,13 @@ meta:
   endian: le
 seq:
   - id: id_tag
-    type: crypt_string
+    type: crypt_string('ID')
   - id: skills
-    type: crypt_string
+    type: crypt_string('ID')
     repeat: expr
     repeat-expr:  7
   - id: accessory
-    type: crypt_string
+    type: crypt_string('ID')
   - id: pos
     type: map_position
   - id: rarity
@@ -67,7 +67,7 @@ seq:
   - id: padding
     size: 1
   - id: spawn_check
-    type: crypt_string
+    type: crypt_string('ID')
   - id: spawn_count
     size: 1
     type: xors1

@@ -8,13 +8,13 @@ meta:
   endian: le
 seq:
   - id: id_tag
-    type: crypt_string
+    type: crypt_string('ID')
   - id:  sprite_base
-    type: crypt_string
+    type: crypt_string('NONE')
     repeat: expr
     repeat-expr:  2
   - id: base_weapon
-    type: crypt_string
+    type: crypt_string('ID')
   - id: index
     size: 4
     type: weapon_index

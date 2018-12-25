@@ -1,6 +1,9 @@
 meta:
   id: crypt_string
   endian: le
+params:
+  - id: cipher
+    type: str
 seq:
   - id: buffer
     type: strz
