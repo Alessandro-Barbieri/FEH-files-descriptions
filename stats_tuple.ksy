@@ -8,19 +8,19 @@ seq:
     size: 2
     type: xors2
     process:  xor([0x32,0xD6])
-  - id: atk
+  - id: attack
     size: 2
     type: xors2
     process:  xor([0xA0,0x14])
-  - id: spd
+  - id: speed
     size: 2
     type: xors2
     process:  xor([0x5E,0xA5])
-  - id: def
+  - id: defense
     size: 2
     type: xors2
     process:  xor([0x66,0x85])
-  - id: res
+  - id: resistance
     size: 2
     type: xors2
     process:  xor([0xE5,0xAE])

@@ -12,5 +12,5 @@ seq:
     size: 2
     type: xoru2
     process:  xor([0xB2,0x28])
-#      - id: padding
-#        size: 4
+  - id: padding
+    size: 4
