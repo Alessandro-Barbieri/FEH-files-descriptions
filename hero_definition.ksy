@@ -35,7 +35,7 @@ seq:
   - id: sort_value
     size: 4
     type: xoru4
-    process:  xor([0x18,0x4e,0x6e,0x5f])
+    process:  xor([0x9b,0x34,0x80,0x2a])
   - id: weapon_type
     type: weapon_index
     size: 1
