@@ -3,6 +3,7 @@ meta:
   imports:
     - xors2
   endian: le
+  license:	CC-BY-NC-SA-3.0
 seq:
   - id: hp
     size: 2

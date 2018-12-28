@@ -3,6 +3,7 @@ meta:
   endian: le
   imports:
     - file_ptr
+  license:	CC-BY-NC-SA-3.0
 params:
   - id: cipher
     type: str

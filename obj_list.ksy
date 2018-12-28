@@ -6,6 +6,7 @@ meta:
     - xoru8
     - weapon_class_definition
     - hero_definition
+  license:	CC-BY-NC-SA-3.0
 params:
   - id: type
     type: str

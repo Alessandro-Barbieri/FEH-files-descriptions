@@ -1,6 +1,7 @@
 meta:
   id: file_tag
   endian: le
+  license:	CC-BY-NC-SA-3.0
 doc: |
   Generic absolute file offset pointer that additionally associates the
   pointed-to data with a tag string.

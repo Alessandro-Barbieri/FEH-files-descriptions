@@ -5,6 +5,7 @@ meta:
     - xoru1
     - xoru4
   endian: le
+  license:	CC-BY-NC-SA-3.0
 seq:
   - id: id
     type: crypt_string('ID')

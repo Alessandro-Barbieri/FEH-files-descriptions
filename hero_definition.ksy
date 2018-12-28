@@ -13,6 +13,7 @@ meta:
     - move_index
     - legendary_info
   endian: le
+  license:	CC-BY-NC-SA-3.0
 seq:
   - id: id_tag
     type: crypt_string('ID')

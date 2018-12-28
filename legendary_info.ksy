@@ -3,6 +3,7 @@ meta:
   imports:
     - stats_tuple
     - legendary_element
+  license:	CC-BY-NC-SA-3.0
 seq:
   - id: bonus_effect
     type: stats_tuple

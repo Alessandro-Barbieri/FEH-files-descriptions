@@ -9,6 +9,7 @@ meta:
     - field_definition
     - map_position
   endian: le
+  license:	CC-BY-NC-SA-3.0
 seq:
   - id: id_tag
     type: crypt_string('ID')

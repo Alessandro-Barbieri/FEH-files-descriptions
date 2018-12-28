@@ -6,6 +6,7 @@ meta:
     - file_tag
     - obj_list
   endian: le
+  license:	CC-BY-NC-SA-3.0
 seq:
   - id: hsdarcbuffer
     type: hsdarc_buffer

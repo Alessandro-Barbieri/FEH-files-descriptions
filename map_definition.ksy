@@ -9,6 +9,7 @@ meta:
     - map_position
     - unit_data
   endian: le
+  license:	CC-BY-NC-SA-3.0
 seq:
   - id: unknown1
     type: u4

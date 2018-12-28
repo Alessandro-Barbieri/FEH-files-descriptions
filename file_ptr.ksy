@@ -1,6 +1,7 @@
 meta:
   id: file_ptr
   endian: le
+  license:	CC-BY-NC-SA-3.0
 doc: |
   Generic absolute file offset pointer. The actual pointed-to file offset is the
   value of the pointer + `0x20`, since the archives have a 32-byte header. As a

@@ -5,6 +5,7 @@ meta:
     - map_definition
     - file_ptr
     - file_tag
+  license:	CC-BY-NC-SA-3.0
   endian: le
 doc: |
   The contents of an HSDArc archive. 

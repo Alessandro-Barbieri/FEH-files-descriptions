@@ -1,5 +1,6 @@
 meta:
   id: weapon_index
+  license:	CC-BY-NC-SA-3.0
 seq:
   - id: index
     type: u1

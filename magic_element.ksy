@@ -1,5 +1,6 @@
 meta:
   id: magic_element
+  license:	CC-BY-NC-SA-3.0
 seq:
   - id: element
     type: u1
