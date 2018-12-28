@@ -4,6 +4,7 @@ meta:
     - xors2
   endian: le
   license:	CC-BY-NC-SA-3.0
+doc-ref:	https://feheroes.gamepedia.com/index.php?title=User:HertzDevil/Reverse-engineering_notes#stats_tuple
 seq:
   - id: hp
     size: 2

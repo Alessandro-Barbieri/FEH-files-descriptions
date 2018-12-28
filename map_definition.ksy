@@ -10,6 +10,7 @@ meta:
     - unit_data
   endian: le
   license:	CC-BY-NC-SA-3.0
+doc-ref:	https://feheroes.gamepedia.com/User:HertzDevil/Reverse-engineering_notes#map_definition
 seq:
   - id: unknown1
     type: u4

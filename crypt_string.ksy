@@ -4,6 +4,7 @@ meta:
   imports:
     - file_ptr
   license:	CC-BY-NC-SA-3.0
+doc-ref:	https://feheroes.gamepedia.com/User:HertzDevil/Reverse-engineering_notes/Basic_data_types#crypt_string.3CXOR.3E
 params:
   - id: cipher
     type: str

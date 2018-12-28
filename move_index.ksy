@@ -1,6 +1,7 @@
 meta:
   id: move_index
   license:	CC-BY-NC-SA-3.0
+doc-ref:	https://feheroes.gamepedia.com/User:HertzDevil/Reverse-engineering_notes/Enumeration_types#move_index
 seq:
   - id: index
     type: u1

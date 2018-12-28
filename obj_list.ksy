@@ -7,6 +7,7 @@ meta:
     - weapon_class_definition
     - hero_definition
   license:	CC-BY-NC-SA-3.0
+doc-ref:	https://feheroes.gamepedia.com/User:HertzDevil/Reverse-engineering_notes/Basic_data_types#obj_list.3CT.2C_xor.3E
 params:
   - id: type
     type: str

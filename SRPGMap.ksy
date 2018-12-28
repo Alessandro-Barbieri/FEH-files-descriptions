@@ -9,6 +9,7 @@ meta:
   endian: le
 doc: |
   The contents of an HSDArc archive. 
+doc-ref: https://feheroes.gamepedia.com/User:HertzDevil/Reverse-engineering_notes/Basic_data_types#hsdarc_buffer
 seq:
   - id: hsdarcbuffer
     type: hsdarc_buffer

@@ -7,6 +7,7 @@ meta:
     - weapon_index
   endian: le
   license:	CC-BY-NC-SA-3.0
+doc-ref:	https://feheroes.gamepedia.com/index.php?title=User:HertzDevil/Reverse-engineering_notes#Weapon_class_definitions
 seq:
   - id: id_tag
     type: crypt_string('ID')

@@ -5,6 +5,7 @@ meta:
 doc: |
   Generic absolute file offset pointer that additionally associates the
   pointed-to data with a tag string.
+doc-ref:	https://feheroes.gamepedia.com/User:HertzDevil/Reverse-engineering_notes/Basic_data_types#file_tag_t.3CT.3E
 seq:
   - id: ptr
     type: u4

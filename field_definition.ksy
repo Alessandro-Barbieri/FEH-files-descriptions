@@ -6,6 +6,7 @@ meta:
     - xoru4
   endian: le
   license:	CC-BY-NC-SA-3.0
+doc-ref:	https://feheroes.gamepedia.com/index.php?title=User:HertzDevil/Reverse-engineering_notes#field_definition
 seq:
   - id: id
     type: crypt_string('ID')

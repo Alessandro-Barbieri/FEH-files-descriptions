@@ -14,6 +14,7 @@ meta:
     - legendary_info
   endian: le
   license:	CC-BY-NC-SA-3.0
+doc-ref:	https://feheroes.gamepedia.com/index.php?title=User:HertzDevil/Reverse-engineering_notes#hero_definition
 seq:
   - id: id_tag
     type: crypt_string('ID')

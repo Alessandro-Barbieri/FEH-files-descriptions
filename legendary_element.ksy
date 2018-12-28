@@ -1,6 +1,7 @@
 meta:
   id: legendary_element
   license:	CC-BY-NC-SA-3.0
+doc-ref: https://feheroes.gamepedia.com/User:HertzDevil/Reverse-engineering_notes/Enumeration_types#legendary_element
 seq:
   - id: element
     type: u1

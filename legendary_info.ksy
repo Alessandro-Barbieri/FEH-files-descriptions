@@ -4,6 +4,7 @@ meta:
     - stats_tuple
     - legendary_element
   license:	CC-BY-NC-SA-3.0
+doc-ref:	https://feheroes.gamepedia.com/User:HertzDevil/Reverse-engineering_notes#legendary_info
 seq:
   - id: bonus_effect
     type: stats_tuple
