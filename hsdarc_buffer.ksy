@@ -76,5 +76,5 @@ instances:
 #   encoding: UTF-8
 #   repeat: eos
 #   doc: |
-#     Null-terminated tag strings. It is possible that some of the tag
-#     strings are not associated with any object.
+#     Null-terminated tag strings. It is possible that some of the tag strings
+#     are not associated with any object.
