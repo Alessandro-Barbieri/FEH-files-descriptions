@@ -6,8 +6,11 @@ meta:
     - xoru8
     - weapon_class_definition
     - hero_definition
-  license:	CC-BY-NC-SA-3.0
-doc-ref:	https://feheroes.gamepedia.com/User:HertzDevil/Reverse-engineering_notes/Basic_data_types#obj_list.3CT.2C_xor.3E
+  license: CC-BY-NC-SA-3.0
+doc: |
+  Generic object list. A variety of files consist of a single list, pointed
+  from the first relocatable pointer (always to `$20`). 
+doc-ref: https://feheroes.gamepedia.com/User:HertzDevil/Reverse-engineering_notes/Basic_data_types#obj_list.3CT.2C_xor.3E
 params:
   - id: type
     type: str
@@ -17,10 +20,11 @@ params:
 seq:
   - id: list_ptr
     type: file_ptr
-  - id:  size
+  - id: size
     type: xoru8
     size: 8
-    process:  xor(key)
+    process: xor(key)
+    doc: Number of objects on the list.
 instances:
   object_list:
     type:
@@ -32,3 +36,4 @@ instances:
     repeat: expr
     repeat-expr: size.data
     if: list_ptr.offset != 0
+    doc: Pointer to the array of objects. Usually `0x10` (points to `$30`).

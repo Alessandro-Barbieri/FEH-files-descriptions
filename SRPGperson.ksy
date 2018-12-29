@@ -5,9 +5,9 @@ meta:
     - file_ptr
     - file_tag
     - obj_list
-  license:	CC-BY-NC-SA-3.0
+  license: CC-BY-NC-SA-3.0
   endian: le
-doc-ref:	https://feheroes.gamepedia.com/User:HertzDevil/Reverse-engineering_notes/Basic_data_types#hsdarc_buffer
+doc-ref: https://feheroes.gamepedia.com/User:HertzDevil/Reverse-engineering_notes/Basic_data_types#hsdarc_buffer
 seq:
   - id: hsdarcbuffer
     type: hsdarc_buffer
@@ -30,7 +30,7 @@ types:
         type: u8
       - id: skill_list
         type: obj_list('hero_definition',[0xe1,0xb9,0x3a,0x3c,0x79,0xab,0x51,0xde])
-		doc-ref:	https://feheroes.gamepedia.com/index.php?title=User:HertzDevil/Reverse-engineering_notes#Player_hero_definitions
+		doc-ref: https://feheroes.gamepedia.com/index.php?title=User:HertzDevil/Reverse-engineering_notes#Player_hero_definitions
     instances:
       ptr_list:
         type: file_ptr
