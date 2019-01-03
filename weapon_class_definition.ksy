@@ -12,7 +12,7 @@ doc: |
   units. Weapon skills only indicate which weapon classes can equip them;
   common weapon attributes are defined in the weapon classes rather than the
   weapon skills.
-  
+
   Only one of `is_staff`, `is_dagger`, and `is_breath` can be used by skills,
   in that order of precedence.
 doc-ref: https://feheroes.gamepedia.com/index.php?title=User:HertzDevil/Reverse-engineering_notes#Weapon_class_definitions

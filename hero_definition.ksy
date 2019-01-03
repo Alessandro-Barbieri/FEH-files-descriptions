@@ -61,7 +61,7 @@ seq:
       A decimal value used to order characters within the same series. The main
       character has a value of `100100`. The largest one or two digits usually
       indicate which in-game region / part the character comes from.
-      
+
       Examples:
       1     Askr, Altea, Echoes Act 1, Chalphy, Lenster (Thracia 776), Pherae (Binding Blade), main characters (Blazing Blade), Renais
       2     Talys, Echoes Act 2, Ostia (Binding Blade), Frelia
@@ -99,7 +99,7 @@ seq:
       8     0x4B    Path of Radiance
       9     0x4A    Radiant Dawn
       10    0x49    Awakening
-      11    0x48    Fates 
+      11    0x48    Fates
   - id: regular_hero
     size: 1
     type: xorb1
