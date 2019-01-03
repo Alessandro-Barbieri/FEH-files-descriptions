@@ -6,10 +6,11 @@ meta:
     - xoru8
     - weapon_class_definition
     - hero_definition
+    - terrain_definition
   license: CC-BY-NC-SA-3.0
 doc: |
   Generic object list. A variety of files consist of a single list, pointed
-  from the first relocatable pointer (always to `$20`). 
+  from the first relocatable pointer (always to `$20`).
 doc-ref: https://feheroes.gamepedia.com/User:HertzDevil/Reverse-engineering_notes/Basic_data_types#obj_list.3CT.2C_xor.3E
 params:
   - id: type
@@ -31,6 +32,7 @@ instances:
       switch-on: type
       cases:
         '"hero_definition"': hero_definition
+        '"terrain_definition"': terrain_definition
         '"weapon_class_definition"': weapon_class_definition
     pos: list_ptr.offset + 0x20
     repeat: expr

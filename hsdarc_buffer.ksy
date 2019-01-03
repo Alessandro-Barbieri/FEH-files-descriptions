@@ -9,7 +9,7 @@ meta:
   license:  CC-BY-NC-SA-3.0
   endian: le
 doc: |
-  The contents of an HSDArc archive. 
+  The contents of an HSDArc archive.
 doc-ref: https://feheroes.gamepedia.com/User:HertzDevil/Reverse-engineering_notes/Basic_data_types#hsdarc_buffer
 params:
   - id: type
@@ -43,11 +43,12 @@ seq:
        `0` on HSDArc archive files, `48 53 44 41 72 63 00 00` (`"HSDArc\0\0"`)
        once the archive is loaded into memory.
   - id: data
-    type: 
+    type:
       switch-on: type
       cases:
         '"map"': map_definition
         '"person"': obj_list('hero_definition',[0xe1,0xb9,0x3a,0x3c,0x79,0xab,0x51,0xde])
+        '"terrain"': obj_list('terrain_definition',[0x3c,0x93,0x7c,0xa8,0xa3,0x2d,0x25,0x22])
         '"weapon"': obj_list('weapon_class_definition',[0x4f,0x4c,0x66,0x6d,0xeb,0x17,0xba,0xa7])
 instances:
   ptr_list:
