@@ -10,6 +10,7 @@ if parse_version(ks_version) < parse_version('0.7'):
 from crypt_string import CryptString
 from magic_element import MagicElement
 from stats_tuple import StatsTuple
+from xorb1 import Xorb1
 from encrypted import Encrypted
 from weapon_index import WeaponIndex
 from move_index import MoveIndex
@@ -55,11 +56,11 @@ class EnemyDefinition(KaitaiStruct):
         self._raw__raw_unknown1 = self._io.read_bytes(1)
         self._raw_unknown1 = KaitaiStream.process_xor_many(self._raw__raw_unknown1, b"\xC5")
         io = KaitaiStream(BytesIO(self._raw_unknown1))
-        self.unknown1 = Encrypted(u"xorb1", io)
+        self.unknown1 = Xorb1(io)
         self._raw__raw_is_boss = self._io.read_bytes(1)
         self._raw_is_boss = KaitaiStream.process_xor_many(self._raw__raw_is_boss, b"\x6A")
         io = KaitaiStream(BytesIO(self._raw_is_boss))
-        self.is_boss = Encrypted(u"xorb1", io)
+        self.is_boss = Xorb1(io)
         self.padding = self._io.read_bytes(7)
         self.base_stats = StatsTuple(self._io)
         self.growth_rates = StatsTuple(self._io)

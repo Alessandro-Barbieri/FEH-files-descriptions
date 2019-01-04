@@ -8,9 +8,9 @@ if parse_version(ks_version) < parse_version('0.7'):
     raise Exception("Incompatible Kaitai Struct Python API: 0.7 or later is required, but you have %s" % (ks_version))
 
 from file_ptr import FilePtr
+from obj_list import ObjList
 from map_definition import MapDefinition
 from file_tag import FileTag
-from obj_list import ObjList
 class HsdarcBuffer(KaitaiStruct):
     """The contents of an HSDArc archive.
     

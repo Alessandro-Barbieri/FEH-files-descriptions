@@ -11,6 +11,7 @@ from crypt_string import CryptString
 from magic_element import MagicElement
 from stats_tuple import StatsTuple
 from file_ptr import FilePtr
+from xorb1 import Xorb1
 from encrypted import Encrypted
 from weapon_index import WeaponIndex
 from move_index import MoveIndex
@@ -64,11 +65,11 @@ class HeroDefinition(KaitaiStruct):
         self._raw__raw_regular_hero = self._io.read_bytes(1)
         self._raw_regular_hero = KaitaiStream.process_xor_many(self._raw__raw_regular_hero, b"\xA1")
         io = KaitaiStream(BytesIO(self._raw_regular_hero))
-        self.regular_hero = Encrypted(u"xorb1", io)
+        self.regular_hero = Xorb1(io)
         self._raw__raw_permanent_hero = self._io.read_bytes(1)
         self._raw_permanent_hero = KaitaiStream.process_xor_many(self._raw__raw_permanent_hero, b"\xC7")
         io = KaitaiStream(BytesIO(self._raw_permanent_hero))
-        self.permanent_hero = Encrypted(u"xorb1", io)
+        self.permanent_hero = Xorb1(io)
         self._raw__raw_base_vector_id = self._io.read_bytes(1)
         self._raw_base_vector_id = KaitaiStream.process_xor_many(self._raw__raw_base_vector_id, b"\x3D")
         io = KaitaiStream(BytesIO(self._raw_base_vector_id))
@@ -76,7 +77,7 @@ class HeroDefinition(KaitaiStruct):
         self._raw__raw_refresher = self._io.read_bytes(1)
         self._raw_refresher = KaitaiStream.process_xor_many(self._raw__raw_refresher, b"\xFF")
         io = KaitaiStream(BytesIO(self._raw_refresher))
-        self.refresher = Encrypted(u"xorb1", io)
+        self.refresher = Xorb1(io)
         self.unknown2 = self._io.read_u1()
         self.padding = self._io.read_bytes(7)
         self.base_stats = StatsTuple(self._io)

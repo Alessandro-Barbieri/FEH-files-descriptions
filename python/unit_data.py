@@ -9,8 +9,9 @@ if parse_version(ks_version) < parse_version('0.7'):
 
 from crypt_string import CryptString
 from stats_tuple import StatsTuple
-from map_position import MapPosition
+from xorb1 import Xorb1
 from encrypted import Encrypted
+from map_position import MapPosition
 class UnitData(KaitaiStruct):
     """Definition of a single unit placed on the map.
     
@@ -60,11 +61,11 @@ class UnitData(KaitaiStruct):
         self._raw__raw_break_terrain = self._io.read_bytes(1)
         self._raw_break_terrain = KaitaiStream.process_xor_many(self._raw__raw_break_terrain, b"\x71")
         io = KaitaiStream(BytesIO(self._raw_break_terrain))
-        self.break_terrain = Encrypted(u"xorb1", io)
+        self.break_terrain = Xorb1(io)
         self._raw__raw_tether = self._io.read_bytes(1)
         self._raw_tether = KaitaiStream.process_xor_many(self._raw__raw_tether, b"\xB8")
         io = KaitaiStream(BytesIO(self._raw_tether))
-        self.tether = Encrypted(u"xorb1", io)
+        self.tether = Xorb1(io)
         self._raw__raw_true_lv = self._io.read_bytes(1)
         self._raw_true_lv = KaitaiStream.process_xor_many(self._raw__raw_true_lv, b"\x85")
         io = KaitaiStream(BytesIO(self._raw_true_lv))
@@ -72,7 +73,7 @@ class UnitData(KaitaiStruct):
         self._raw__raw_is_enemy = self._io.read_bytes(1)
         self._raw_is_enemy = KaitaiStream.process_xor_many(self._raw__raw_is_enemy, b"\xD0")
         io = KaitaiStream(BytesIO(self._raw_is_enemy))
-        self.is_enemy = Encrypted(u"xorb1", io)
+        self.is_enemy = Xorb1(io)
         self.padding = self._io.read_bytes(1)
         self.spawn_check = CryptString(u"ID", self._io)
         self._raw__raw_spawn_count = self._io.read_bytes(1)

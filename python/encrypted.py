@@ -25,8 +25,6 @@ class Encrypted(KaitaiStruct):
             self.data = self._io.read_u4le()
         elif _on == u"xoru1":
             self.data = self._io.read_u1()
-        elif _on == u"xorb1":
-            self.data = self._io.read_bits_int(1) != 0
         elif _on == u"xoru2":
             self.data = self._io.read_u2le()
         elif _on == u"xors1":

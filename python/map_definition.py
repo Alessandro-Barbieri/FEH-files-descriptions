@@ -7,12 +7,12 @@ from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, 
 if parse_version(ks_version) < parse_version('0.7'):
     raise Exception("Incompatible Kaitai Struct Python API: 0.7 or later is required, but you have %s" % (ks_version))
 
-from xoru4 import Xoru4
-from field_definition import FieldDefinition
-from file_ptr import FilePtr
-from map_position import MapPosition
-from encrypted import Encrypted
 from unit_data import UnitData
+from file_ptr import FilePtr
+from xorb1 import Xorb1
+from encrypted import Encrypted
+from field_definition import FieldDefinition
+from map_position import MapPosition
 class MapDefinition(KaitaiStruct):
     """Top-level definition of a map. One instance appears in each map file at `$20`.
     
@@ -37,11 +37,11 @@ class MapDefinition(KaitaiStruct):
         self._raw__raw_player_count = self._io.read_bytes(4)
         self._raw_player_count = KaitaiStream.process_xor_many(self._raw__raw_player_count, b"\x9A\xC7\x63\x9D")
         io = KaitaiStream(BytesIO(self._raw_player_count))
-        self.player_count = Xoru4(io)
+        self.player_count = Encrypted(u"xoru4", io)
         self._raw__raw_unit_count = self._io.read_bytes(4)
         self._raw_unit_count = KaitaiStream.process_xor_many(self._raw__raw_unit_count, b"\xEE\x10\x67\xAC")
         io = KaitaiStream(BytesIO(self._raw_unit_count))
-        self.unit_count = Xoru4(io)
+        self.unit_count = Encrypted(u"xoru4", io)
         self._raw__raw_turns_to_win = self._io.read_bytes(1)
         self._raw_turns_to_win = KaitaiStream.process_xor_many(self._raw__raw_turns_to_win, b"\xFD")
         io = KaitaiStream(BytesIO(self._raw_turns_to_win))
@@ -49,7 +49,7 @@ class MapDefinition(KaitaiStruct):
         self._raw__raw_last_enemy_phase = self._io.read_bytes(1)
         self._raw_last_enemy_phase = KaitaiStream.process_xor_many(self._raw__raw_last_enemy_phase, b"\xC7")
         io = KaitaiStream(BytesIO(self._raw_last_enemy_phase))
-        self.last_enemy_phase = Encrypted(u"xorb1", io)
+        self.last_enemy_phase = Xorb1(io)
         self._raw__raw_turns_to_defend = self._io.read_bytes(1)
         self._raw_turns_to_defend = KaitaiStream.process_xor_many(self._raw__raw_turns_to_defend, b"\xEC")
         io = KaitaiStream(BytesIO(self._raw_turns_to_defend))

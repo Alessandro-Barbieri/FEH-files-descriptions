@@ -7,12 +7,12 @@ from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, 
 if parse_version(ks_version) < parse_version('0.7'):
     raise Exception("Incompatible Kaitai Struct Python API: 0.7 or later is required, but you have %s" % (ks_version))
 
-from hero_definition import HeroDefinition
-from xoru8 import Xoru8
-from terrain_definition import TerrainDefinition
 from enemy_definition import EnemyDefinition
 from file_ptr import FilePtr
 from weapon_class_definition import WeaponClassDefinition
+from encrypted import Encrypted
+from hero_definition import HeroDefinition
+from terrain_definition import TerrainDefinition
 class ObjList(KaitaiStruct):
     """Generic object list. A variety of files consist of a single list, pointed
     from the first relocatable pointer (always to `$20`).
@@ -33,7 +33,7 @@ class ObjList(KaitaiStruct):
         self._raw__raw_size = self._io.read_bytes(8)
         self._raw_size = KaitaiStream.process_xor_many(self._raw__raw_size, self.key)
         io = KaitaiStream(BytesIO(self._raw_size))
-        self.size = Xoru8(io)
+        self.size = Encrypted(u"xoru8", io)
 
     @property
     def object_list(self):
