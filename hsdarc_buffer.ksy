@@ -9,7 +9,6 @@ meta:
     - file_tag
     - hero_definition
     - map_definition
-    - obj_list
     - terrain_definition
     - weapon_class_definition
   license:  CC-BY-NC-SA-3.0
