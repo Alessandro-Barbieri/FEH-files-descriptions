@@ -2,11 +2,13 @@ meta:
   id: obj_list
   endian: le
   imports:
-    - file_ptr
     - xoru8
+    - file_ptr
+    - encrypted
     - weapon_class_definition
     - hero_definition
     - terrain_definition
+    - enemy_definition
   license: CC-BY-NC-SA-3.0
 doc: |
   Generic object list. A variety of files consist of a single list, pointed
@@ -31,6 +33,7 @@ instances:
     type:
       switch-on: type
       cases:
+        '"enemy_definition"': enemy_definition
         '"hero_definition"': hero_definition
         '"terrain_definition"': terrain_definition
         '"weapon_class_definition"': weapon_class_definition
