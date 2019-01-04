@@ -2,10 +2,7 @@ meta:
   id: hero_definition
   imports:
     - crypt_string
-    - xoru4
-    - xoru1
-    - xorb1
-    - xors8
+    - encrypted
     - weapon_index
     - stats_tuple
     - file_ptr
@@ -39,7 +36,7 @@ seq:
       If non-null, this hero is a Legendary Hero and has the element / effects
       given in the pointed-to struct.
   - id: timestamp
-    type: xors8
+    type: encrypted('xors8')
     size: 8
     process: xor([0x9b,0x48,0xb6,0xe9,0x42,0xe7,0xc1,0xbd])
     doc: |
@@ -50,12 +47,12 @@ seq:
       past `timestamp`.
   - id: id_num
     size: 4
-    type: xoru4
+    type: encrypted('xoru4')
     process: xor([0x18,0x4e,0x6e,0x5f])
     doc: The internal `ID` of the hero.
   - id: sort_value
     size: 4
-    type: xoru4
+    type: encrypted('xoru4')
     process: xor([0x9b,0x34,0x80,0x2a])
     doc: |
       A decimal value used to order characters within the same series. The main
@@ -84,7 +81,7 @@ seq:
     doc: Move type of the hero.
   - id: series
     size: 1
-    type: xoru1
+    type: encrypted('xoru1')
     process: xor([0x43])
     doc: |
       The game the character originates from.
@@ -102,24 +99,24 @@ seq:
       11    0x48    Fates
   - id: regular_hero
     size: 1
-    type: xorb1
+    type: encrypted('xorb1')
     process: xor([0xa1])
     doc: True if the hero is available in the random pool.
   - id: permanent_hero
     size: 1
-    type: xorb1
+    type: encrypted('xorb1')
     process: xor([0xc7])
     doc: True if the hero cannot be sent home nor merged.
   - id: base_vector_id
     size: 1
-    type: xoru1
+    type: encrypted('xoru1')
     process: xor([0x3d])
     doc: |
       The byte that determines where to start counting the growth vectors of
       the hero.
   - id: refresher
     size: 1
-    type: xorb1
+    type: encrypted('xorb1')
     process: xor([0xff])
     doc: |
       True if the hero can learn Sing or Dance. At most one such unit can be
@@ -159,7 +156,8 @@ seq:
       10    Unlocked Passive B
       11    Unlocked Passive C
       3, 4, 5, 12, 13   Unknown
-      Unlocked skills do not always match their categories, but this only occurs on 5 of the launch heroes.
+      Unlocked skills do not always match their categories, but this only
+      occurs on 5 of the launch heroes.
 instances:
   legendary:
     type: legendary_info

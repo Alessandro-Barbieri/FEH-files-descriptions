@@ -2,8 +2,7 @@ meta:
   id: weapon_class_definition
   imports:
     - crypt_string
-    - xoru1
-    - xorb1
+    - encrypted
     - weapon_index
   endian: le
   license: CC-BY-NC-SA-3.0
@@ -45,44 +44,44 @@ seq:
     doc: Color of the weapon class.
   - id: range
     size: 1
-    type: xoru1
+    type: encrypted('xoru1')
     process: xor([0x8b])
     doc: |
       Default attack range of the weapon class. Only `SLID_周囲戦闘_敵射程`, used by
       Close Guard 3 and Distant Guard 3, check this value.
   - id: unknown1
     size: 1
-    type: xoru1
+    type: encrypted('xoru1')
     process: xor([0xd0])
   - id: equip_group
     size: 1
-    type: xoru1
+    type: encrypted('xoru1')
     process: xor([0xb7])
     doc: |
       Group index of the weapon class as classified according to the skill menu
       used during skill inheritance.
   - id: res_damage
     size: 1
-    type: xorb1
+    type: encrypted('xorb1')
     process: xor([0x07])
     doc: Uses the foe's Res to calculate damage if true, uses Def otherwise.
   - id: is_staff
     size: 1
-    type: xorb1
+    type: encrypted('xorb1')
     process: xor([0x78])
     doc: |
       If true, allows `skill_definition.class_params` to grant the effect of
       Wrathful Staff 3 or Dazzling Staff 3.
   - id: is_dagger
     size: 1
-    type: xorb1
+    type: encrypted('xorb1')
     process: xor([0xd7])
     doc: |
       If true, allows `skill_definition.class_params` to inflict stat penalties
       on foes.
   - id: is_breath
     size: 1
-    type: xorb1
+    type: encrypted('xorb1')
     process: xor([0x11])
     doc: |
       If true, allows `skill_definition.class_params` to calculate damage using

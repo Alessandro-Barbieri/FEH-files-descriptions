@@ -1,7 +1,7 @@
 meta:
   id: map_position
   imports:
-    - xoru2
+    - encrypted
   endian: le
   license: CC-BY-NC-SA-3.0ù
 doc: Coordinates representing a point on a map.
@@ -9,12 +9,12 @@ doc-ref: https://feheroes.gamepedia.com/User:HertzDevil/Reverse-engineering_note
 seq:
   - id: x
     size: 2
-    type: xoru2
+    type: encrypted('xoru2')
     process: xor([0x32,0xB3])
     doc: X position, 0 for the leftmost column.
   - id: y
     size: 2
-    type: xoru2
+    type: encrypted('xoru2')
     process: xor([0xB2,0x28])
     doc: Y position, 0 for the bottom-most row.
   - id: padding

@@ -1,9 +1,7 @@
 meta:
   id: unit_data
   imports:
-    - xoru1
-    - xors1
-    - xorb1
+    - encrypted
     - crypt_string
     - stats_tuple
     - field_definition
@@ -36,17 +34,17 @@ seq:
     doc: Initial coordinates of the unit.
   - id: rarity
     size: 1
-    type: xoru1
+    type: encrypted('xoru1')
     process: xor([0x61])
     doc: Rarity of the unit.
   - id: lv
     size: 1
-    type: xoru1
+    type: encrypted('xoru1')
     process: xor([0x2a])
     doc: Displayed level of the unit.
   - id: cooldown_count
     size: 1
-    type: xors1
+    type: encrypted('xors1')
     process: xor([0x1e])
     doc: |
       The initial Special cooldown count of the unit, or `-1` to use the
@@ -58,7 +56,7 @@ seq:
     doc: Base stats of the unit when all skills are unequipped.
   - id: start_turn
     size: 1
-    type: xors1
+    type: encrypted('xors1')
     process: xor([0xcf])
     doc: |
      The first turn by which the unit starts moving regardless of the movement
@@ -66,7 +64,7 @@ seq:
      engages any unit of the unit's movement group.
   - id: movement_group
     size: 1
-    type: xors1
+    type: encrypted('xors1')
     process: xor([0xf4])
     doc: |
      An index shared between units which start moving together; engaging any
@@ -75,7 +73,7 @@ seq:
      A value of `-1` means the unit belongs to its own group.
   - id: movement_delay
     size: 1
-    type: xors1
+    type: encrypted('xors1')
     process: xor([0x95])
     doc: |
       Once the unit's movement group starts moving, waits for up to
@@ -83,26 +81,26 @@ seq:
       if this value is equal to `-1`.
   - id: break_terrain
     size: 1
-    type: xorb1
+    type: encrypted('xorb1')
     process: xor([0x71])
     doc: Whether the unit considers breakable terrain as breakable.
   - id: tether
     size: 1
-    type: xorb1
+    type: encrypted('xorb1')
     process: xor([0xb8])
     doc: |
       Whether the unit returns to its initial position if it cannot find any
       moves to make.
   - id: true_lv
     size: 1
-    type: xoru1
+    type: encrypted('xoru1')
     process: xor([0x85])
     doc: |
       Internal level of the unit. The `+` is shown if this is higher than the
       displayed level.
   - id: is_enemy
     size: 1
-    type: xorb1
+    type: encrypted('xorb1')
     process: xor([0xd0])
     doc: |
       True if the unit is a foe, false if ally. For permanent maps this
@@ -116,14 +114,14 @@ seq:
       whether a reinforcement should be spawned.
   - id: spawn_count
     size: 1
-    type: xors1
+    type: encrypted('xors1')
     process: xor([0x0A])
     doc: |
       If this unit appears as a reinforcement, the number of units that can be
       spawned; otherwise this field is `-1` and the unit appears initially.
   - id: spawn_turns
     size: 1
-    type: xors1
+    type: encrypted('xors1')
     process: xor([0x0A])
     doc: |
       Number of turns to wait before the unit is allowed to spawn (i.e. the
@@ -132,7 +130,7 @@ seq:
       can spawn on any turn.
   - id: spawn_target_remain
     size: 1
-    type: xors1
+    type: encrypted('xors1')
     process: xor([0x2d])
     doc: |
       If not `-1`, this unit spawns only when the number of units with internal
@@ -140,7 +138,7 @@ seq:
       files only use `0` so far.)
   - id: spawn_target_kills
     size: 1
-    type: xors1
+    type: encrypted('xors1')
     process: xor([0x5b])
     doc: |
       If not -`1`, this unit spawns only when at least `spawn_target_kills`

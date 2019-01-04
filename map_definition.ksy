@@ -1,13 +1,12 @@
 meta:
   id: map_definition
   imports:
-    - xoru1
-    - xoru4
-    - xorb1
+    - encrypted
     - file_ptr
     - field_definition
     - map_position
     - unit_data
+    - xoru4
   endian: le
   license: CC-BY-NC-SA-3.0
 doc: Top-level definition of a map. One instance appears in each map file at `$20`.
@@ -17,7 +16,7 @@ seq:
     type: u4
   - id: highest_score
     size: 4
-    type: xoru4
+    type: encrypted('xoru4')
     process: xor([0xB1,0x50,0xE2,0xA9])
     doc: |
       What appears to be the maximum score among all units where the score
@@ -40,21 +39,21 @@ seq:
     doc: Length of the `units` array.
   - id: turns_to_win
     size: 1
-    type: xoru1
+    type: encrypted('xoru1')
     process: xor([0xFD])
     doc: |
       If non-zero, the maximum number of turns under which the player must win
       the map.
   - id: last_enemy_phase
     size: 1
-    type: xorb1
+    type: encrypted('xorb1')
     process: xor([0xC7])
     doc: |
       Whether the enemy phase occurs on the last turn if `turns_to_win` is
       given. Only used for Tactics Drills maps.
   - id: turns_to_defend
     size: 1
-    type: xoru1
+    type: encrypted('xoru1')
     process: xor([0xEC])
     doc: |
       If non-zero, the number of turns the player must defend in order to win

@@ -1,9 +1,9 @@
 meta:
   id: field_definition
   imports:
-    - crypt_string
-    - xoru1
     - xoru4
+    - crypt_string
+    - encrypted
   endian: le
   license: CC-BY-NC-SA-3.0
 doc: Terrain data of a map. Graphical information is stored outside map files.
@@ -26,7 +26,7 @@ seq:
     doc: Height of the map.
   - id: base_terrain
     size: 1
-    type: xoru1
+    type: encrypted('xoru1')
     process: xor([0x41])
     doc: |
       Default terrain index of the map. If this is not `-1`, special defaults
