@@ -4,7 +4,6 @@ meta:
     - encrypted
     - crypt_string
     - stats_tuple
-    - field_definition
     - map_position
     - xorb1
   endian: le
