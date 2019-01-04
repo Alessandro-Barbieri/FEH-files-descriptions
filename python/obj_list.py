@@ -13,6 +13,7 @@ from weapon_class_definition import WeaponClassDefinition
 from encrypted import Encrypted
 from hero_definition import HeroDefinition
 from terrain_definition import TerrainDefinition
+from field_gfx_definition import FieldGfxDefinition
 class ObjList(KaitaiStruct):
     """Generic object list. A variety of files consist of a single list, pointed
     from the first relocatable pointer (always to `$20`).
@@ -47,14 +48,16 @@ class ObjList(KaitaiStruct):
             self._m_object_list = [None] * (self.size.data)
             for i in range(self.size.data):
                 _on = self.type
-                if _on == u"enemy_definition":
-                    self._m_object_list[i] = EnemyDefinition(self._io)
-                elif _on == u"hero_definition":
-                    self._m_object_list[i] = HeroDefinition(self._io)
-                elif _on == u"terrain_definition":
-                    self._m_object_list[i] = TerrainDefinition(self._io)
+                if _on == u"field_gfx_definition":
+                    self._m_object_list[i] = FieldGfxDefinition(self._io)
                 elif _on == u"weapon_class_definition":
                     self._m_object_list[i] = WeaponClassDefinition(self._io)
+                elif _on == u"hero_definition":
+                    self._m_object_list[i] = HeroDefinition(self._io)
+                elif _on == u"enemy_definition":
+                    self._m_object_list[i] = EnemyDefinition(self._io)
+                elif _on == u"terrain_definition":
+                    self._m_object_list[i] = TerrainDefinition(self._io)
 
             self._io.seek(_pos)
 

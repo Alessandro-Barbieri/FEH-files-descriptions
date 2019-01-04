@@ -41,6 +41,8 @@ class HsdarcBuffer(KaitaiStruct):
             self.data = ObjList(u"terrain_definition", b"\x3C\x93\x7C\xA8\xA3\x2D\x25\x22", self._io)
         elif _on == u"map":
             self.data = MapDefinition(self._io)
+        elif _on == u"field":
+            self.data = ObjList(u"field_gfx_definition", b"\x58\xBC\xDF\xCA\x3C\x08\x90\x1D", self._io)
         elif _on == u"person":
             self.data = ObjList(u"hero_definition", b"\xE1\xB9\x3A\x3C\x79\xAB\x51\xDE", self._io)
 
