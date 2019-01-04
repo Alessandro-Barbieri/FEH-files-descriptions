@@ -7,9 +7,9 @@ from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, 
 if parse_version(ks_version) < parse_version('0.7'):
     raise Exception("Incompatible Kaitai Struct Python API: 0.7 or later is required, but you have %s" % (ks_version))
 
-from unit_data import UnitData
 from file_ptr import FilePtr
 from xorb1 import Xorb1
+from unit_data import UnitData
 from encrypted import Encrypted
 from field_definition import FieldDefinition
 from map_position import MapPosition
