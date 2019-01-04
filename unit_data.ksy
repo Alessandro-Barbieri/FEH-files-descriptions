@@ -6,6 +6,7 @@ meta:
     - stats_tuple
     - field_definition
     - map_position
+    - xorb1
   endian: le
   license: CC-BY-NC-SA-3.0
 doc: Definition of a single unit placed on the map.
@@ -81,12 +82,12 @@ seq:
       if this value is equal to `-1`.
   - id: break_terrain
     size: 1
-    type: encrypted('xorb1')
+    type: xorb1
     process: xor([0x71])
     doc: Whether the unit considers breakable terrain as breakable.
   - id: tether
     size: 1
-    type: encrypted('xorb1')
+    type: xorb1
     process: xor([0xb8])
     doc: |
       Whether the unit returns to its initial position if it cannot find any
@@ -100,7 +101,7 @@ seq:
       displayed level.
   - id: is_enemy
     size: 1
-    type: encrypted('xorb1')
+    type: xorb1
     process: xor([0xd0])
     doc: |
       True if the unit is a foe, false if ally. For permanent maps this

@@ -4,6 +4,7 @@ meta:
     - crypt_string
     - encrypted
     - weapon_index
+    - xorb1
   endian: le
   license: CC-BY-NC-SA-3.0
 doc: |
@@ -62,26 +63,26 @@ seq:
       used during skill inheritance.
   - id: res_damage
     size: 1
-    type: encrypted('xorb1')
+    type: xorb1
     process: xor([0x07])
     doc: Uses the foe's Res to calculate damage if true, uses Def otherwise.
   - id: is_staff
     size: 1
-    type: encrypted('xorb1')
+    type: xorb1
     process: xor([0x78])
     doc: |
       If true, allows `skill_definition.class_params` to grant the effect of
       Wrathful Staff 3 or Dazzling Staff 3.
   - id: is_dagger
     size: 1
-    type: encrypted('xorb1')
+    type: xorb1
     process: xor([0xd7])
     doc: |
       If true, allows `skill_definition.class_params` to inflict stat penalties
       on foes.
   - id: is_breath
     size: 1
-    type: encrypted('xorb1')
+    type: xorb1
     process: xor([0x11])
     doc: |
       If true, allows `skill_definition.class_params` to calculate damage using

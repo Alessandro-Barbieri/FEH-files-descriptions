@@ -1,7 +1,6 @@
 meta:
   id: field_definition
   imports:
-    - xoru4
     - crypt_string
     - encrypted
   endian: le
@@ -16,12 +15,12 @@ seq:
       the filename without the extension and the difficulty (e.g. S2115).
   - id: width
     size: 4
-    type: xoru4
+    type: encrypted('xoru4')
     process: xor([0x5F,0xD7,0x7C,0x6B])
     doc: Width of the map.
   - id: height
     size: 4
-    type: xoru4
+    type: encrypted('xoru4')
     process: xor([0xd5,0x12,0xaa,0x2b])
     doc: Height of the map.
   - id: base_terrain

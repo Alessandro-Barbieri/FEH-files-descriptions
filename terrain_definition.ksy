@@ -2,6 +2,7 @@ meta:
   id: terrain_definition
   imports:
     - encrypted
+    - xorb1
   endian: le
   license: CC-BY-NC-SA-3.0
 doc: |
@@ -42,7 +43,7 @@ seq:
     process: xor([0xcb])
   - id: inaccessible
     size: 1
-    type: encrypted('xorb1')
+    type: xorb1
     process: xor([0x16])
     doc: |
       True if the terrain cannot be entered by any unit. Certain tiles such as
@@ -54,7 +55,7 @@ seq:
     doc: Number of hits the terrain can take before it is destroyed.
   - id: is_wall
     size: 1
-    type: encrypted('xorb1')
+    type: xorb1
     process: xor([0xa8])
     doc: |
       True for wall terrains, false otherwise. Wall terrains use different tile
@@ -63,32 +64,32 @@ seq:
       for all directions).
   - id: is_liquid
     size: 1
-    type: encrypted('xorb1')
+    type: xorb1
     process: xor([0x7c])
     doc: |
       `True` for water bodies and lava, `false` otherwise.
   - id: is_bridge
     size: 1
-    type: encrypted('xorb1')
+    type: xorb1
     process: xor([0x08])
     doc: |
       `True` for bridge terrains, `false` otherwise.
   - id: is_trench
     size: 1
-    type: encrypted('xorb1')
+    type: xorb1
     process: xor([0x30])
     doc: |
       `True` for trench terrains, `false` otherwise.
   - id: is_fortress
     size: 1
-    type: encrypted('xorb1')
+    type: xorb1
     process: xor([0xda])
     doc: |
       Whether destroying this terrain causes a victory or loss. Used for playe
       and enemy fortresses.
   - id: is_rd_terrain
     size: 1
-    type: encrypted('xorb1')
+    type: xorb1
     process: xor([0xcd])
     doc: |
       True for the special terrains used in Rival Domains and Grand Conquests,

@@ -4,6 +4,7 @@ meta:
     - crypt_string
     - encrypted
     - stats_tuple
+    - xorb1
   endian: le
   license: CC-BY-NC-SA-3.0
 doc: |
@@ -65,11 +66,11 @@ seq:
     doc: Move type of the enemy.
   - id: unknown1
     size: 1
-    type: encrypted('xorb1')
+    type: xorb1
     process: xor([0xc5])
   - id: is_boss
     size: 1
-    type: encrypted('xorb1')
+    type: xorb1
     process: xor([0x6a])
     doc: |
       True if this unit is an enemy boss, false if this unit is a generic unit.

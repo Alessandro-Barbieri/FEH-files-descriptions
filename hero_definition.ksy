@@ -99,12 +99,12 @@ seq:
       11    0x48    Fates
   - id: regular_hero
     size: 1
-    type: encrypted('xorb1')
+    type: xorb1
     process: xor([0xa1])
     doc: True if the hero is available in the random pool.
   - id: permanent_hero
     size: 1
-    type: encrypted('xorb1')
+    type: xorb1
     process: xor([0xc7])
     doc: True if the hero cannot be sent home nor merged.
   - id: base_vector_id
@@ -116,7 +116,7 @@ seq:
       the hero.
   - id: refresher
     size: 1
-    type: encrypted('xorb1')
+    type: xorb1
     process: xor([0xff])
     doc: |
       True if the hero can learn Sing or Dance. At most one such unit can be

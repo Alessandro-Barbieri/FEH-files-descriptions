@@ -10,7 +10,6 @@ seq:
     type:
       switch-on: typ
       cases:
-        '"xorb1"': b1
         '"xoru1"': u1
         '"xoru2"': u2
         '"xoru4"': u4

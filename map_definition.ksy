@@ -6,7 +6,7 @@ meta:
     - field_definition
     - map_position
     - unit_data
-    - xoru4
+    - xorb1
   endian: le
   license: CC-BY-NC-SA-3.0
 doc: Top-level definition of a map. One instance appears in each map file at `$20`.
@@ -29,12 +29,12 @@ seq:
     type: file_ptr
   - id: player_count
     size: 4
-    type: xoru4
+    type: encrypted('xoru4')
     process: xor([0x9A,0xC7,0x63,0x9D])
     doc: Length of the `player_pos` array.
   - id: unit_count
     size: 4
-    type: xoru4
+    type: encrypted('xoru4')
     process: xor([0xEE,0x10,0x67,0xAC])
     doc: Length of the `units` array.
   - id: turns_to_win
@@ -46,7 +46,7 @@ seq:
       the map.
   - id: last_enemy_phase
     size: 1
-    type: encrypted('xorb1')
+    type: xorb1
     process: xor([0xC7])
     doc: |
       Whether the enemy phase occurs on the last turn if `turns_to_win` is

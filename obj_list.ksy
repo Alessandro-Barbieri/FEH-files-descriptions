@@ -2,7 +2,6 @@ meta:
   id: obj_list
   endian: le
   imports:
-    - xoru8
     - file_ptr
     - encrypted
     - weapon_class_definition
@@ -24,7 +23,7 @@ seq:
   - id: list_ptr
     type: file_ptr
   - id: size
-    type: xoru8
+    type: encrypted('xoru8')
     size: 8
     process: xor(key)
     doc: Number of objects on the list.
