@@ -7,7 +7,7 @@ from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, 
 if parse_version(ks_version) < parse_version('0.7'):
     raise Exception("Incompatible Kaitai Struct Python API: 0.7 or later is required, but you have %s" % (ks_version))
 
-from xors2 import Xors2
+from encrypted import Encrypted
 class StatsTuple(KaitaiStruct):
     """A tuple representing the five stat values. The meaning of the tuple depends
     on the context.
@@ -25,23 +25,23 @@ class StatsTuple(KaitaiStruct):
         self._raw__raw_hp = self._io.read_bytes(2)
         self._raw_hp = KaitaiStream.process_xor_many(self._raw__raw_hp, b"\x32\xD6")
         io = KaitaiStream(BytesIO(self._raw_hp))
-        self.hp = Xors2(io)
+        self.hp = Encrypted(u"xors2", io)
         self._raw__raw_attack = self._io.read_bytes(2)
         self._raw_attack = KaitaiStream.process_xor_many(self._raw__raw_attack, b"\xA0\x14")
         io = KaitaiStream(BytesIO(self._raw_attack))
-        self.attack = Xors2(io)
+        self.attack = Encrypted(u"xors2", io)
         self._raw__raw_speed = self._io.read_bytes(2)
         self._raw_speed = KaitaiStream.process_xor_many(self._raw__raw_speed, b"\x5E\xA5")
         io = KaitaiStream(BytesIO(self._raw_speed))
-        self.speed = Xors2(io)
+        self.speed = Encrypted(u"xors2", io)
         self._raw__raw_defense = self._io.read_bytes(2)
         self._raw_defense = KaitaiStream.process_xor_many(self._raw__raw_defense, b"\x66\x85")
         io = KaitaiStream(BytesIO(self._raw_defense))
-        self.defense = Xors2(io)
+        self.defense = Encrypted(u"xors2", io)
         self._raw__raw_resistance = self._io.read_bytes(2)
         self._raw_resistance = KaitaiStream.process_xor_many(self._raw__raw_resistance, b"\xE5\xAE")
         io = KaitaiStream(BytesIO(self._raw_resistance))
-        self.resistance = Xors2(io)
+        self.resistance = Encrypted(u"xors2", io)
         self.unknown1 = self._io.read_s2le()
         self.unknown2 = self._io.read_s2le()
         self.unknown3 = self._io.read_s2le()

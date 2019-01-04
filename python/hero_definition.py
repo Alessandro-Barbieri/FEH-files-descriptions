@@ -7,16 +7,13 @@ from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, 
 if parse_version(ks_version) < parse_version('0.7'):
     raise Exception("Incompatible Kaitai Struct Python API: 0.7 or later is required, but you have %s" % (ks_version))
 
-from xors8 import Xors8
+from crypt_string import CryptString
 from magic_element import MagicElement
-from xoru4 import Xoru4
+from stats_tuple import StatsTuple
 from file_ptr import FilePtr
-from xorb1 import Xorb1
-from xoru1 import Xoru1
+from encrypted import Encrypted
 from weapon_index import WeaponIndex
 from move_index import MoveIndex
-from crypt_string import CryptString
-from stats_tuple import StatsTuple
 from legendary_info import LegendaryInfo
 class HeroDefinition(KaitaiStruct):
     """Complete definition of a hero.
@@ -39,15 +36,15 @@ class HeroDefinition(KaitaiStruct):
         self._raw__raw_timestamp = self._io.read_bytes(8)
         self._raw_timestamp = KaitaiStream.process_xor_many(self._raw__raw_timestamp, b"\x9B\x48\xB6\xE9\x42\xE7\xC1\xBD")
         io = KaitaiStream(BytesIO(self._raw_timestamp))
-        self.timestamp = Xors8(io)
+        self.timestamp = Encrypted(u"xors8", io)
         self._raw__raw_id_num = self._io.read_bytes(4)
         self._raw_id_num = KaitaiStream.process_xor_many(self._raw__raw_id_num, b"\x18\x4E\x6E\x5F")
         io = KaitaiStream(BytesIO(self._raw_id_num))
-        self.id_num = Xoru4(io)
+        self.id_num = Encrypted(u"xoru4", io)
         self._raw__raw_sort_value = self._io.read_bytes(4)
         self._raw_sort_value = KaitaiStream.process_xor_many(self._raw__raw_sort_value, b"\x9B\x34\x80\x2A")
         io = KaitaiStream(BytesIO(self._raw_sort_value))
-        self.sort_value = Xoru4(io)
+        self.sort_value = Encrypted(u"xoru4", io)
         self._raw__raw_weapon_type = self._io.read_bytes(1)
         self._raw_weapon_type = KaitaiStream.process_xor_many(self._raw__raw_weapon_type, b"\x06")
         io = KaitaiStream(BytesIO(self._raw_weapon_type))
@@ -63,23 +60,23 @@ class HeroDefinition(KaitaiStruct):
         self._raw__raw_series = self._io.read_bytes(1)
         self._raw_series = KaitaiStream.process_xor_many(self._raw__raw_series, b"\x43")
         io = KaitaiStream(BytesIO(self._raw_series))
-        self.series = Xoru1(io)
+        self.series = Encrypted(u"xoru1", io)
         self._raw__raw_regular_hero = self._io.read_bytes(1)
         self._raw_regular_hero = KaitaiStream.process_xor_many(self._raw__raw_regular_hero, b"\xA1")
         io = KaitaiStream(BytesIO(self._raw_regular_hero))
-        self.regular_hero = Xorb1(io)
+        self.regular_hero = Encrypted(u"xorb1", io)
         self._raw__raw_permanent_hero = self._io.read_bytes(1)
         self._raw_permanent_hero = KaitaiStream.process_xor_many(self._raw__raw_permanent_hero, b"\xC7")
         io = KaitaiStream(BytesIO(self._raw_permanent_hero))
-        self.permanent_hero = Xorb1(io)
+        self.permanent_hero = Encrypted(u"xorb1", io)
         self._raw__raw_base_vector_id = self._io.read_bytes(1)
         self._raw_base_vector_id = KaitaiStream.process_xor_many(self._raw__raw_base_vector_id, b"\x3D")
         io = KaitaiStream(BytesIO(self._raw_base_vector_id))
-        self.base_vector_id = Xoru1(io)
+        self.base_vector_id = Encrypted(u"xoru1", io)
         self._raw__raw_refresher = self._io.read_bytes(1)
         self._raw_refresher = KaitaiStream.process_xor_many(self._raw__raw_refresher, b"\xFF")
         io = KaitaiStream(BytesIO(self._raw_refresher))
-        self.refresher = Xorb1(io)
+        self.refresher = Encrypted(u"xorb1", io)
         self.unknown2 = self._io.read_u1()
         self.padding = self._io.read_bytes(7)
         self.base_stats = StatsTuple(self._io)

@@ -8,10 +8,9 @@ from enum import Enum
 if parse_version(ks_version) < parse_version('0.7'):
     raise Exception("Incompatible Kaitai Struct Python API: 0.7 or later is required, but you have %s" % (ks_version))
 
-from xorb1 import Xorb1
-from xoru1 import Xoru1
-from weapon_index import WeaponIndex
 from crypt_string import CryptString
+from weapon_index import WeaponIndex
+from encrypted import Encrypted
 class WeaponClassDefinition(KaitaiStruct):
     """The file `assets/Common/SRPG/Weapon.bin` defines the weapon classes used by
     units. Weapon skills only indicate which weapon classes can equip them;
@@ -51,31 +50,31 @@ class WeaponClassDefinition(KaitaiStruct):
         self._raw__raw_range = self._io.read_bytes(1)
         self._raw_range = KaitaiStream.process_xor_many(self._raw__raw_range, b"\x8B")
         io = KaitaiStream(BytesIO(self._raw_range))
-        self.range = Xoru1(io)
+        self.range = Encrypted(u"xoru1", io)
         self._raw__raw_unknown1 = self._io.read_bytes(1)
         self._raw_unknown1 = KaitaiStream.process_xor_many(self._raw__raw_unknown1, b"\xD0")
         io = KaitaiStream(BytesIO(self._raw_unknown1))
-        self.unknown1 = Xoru1(io)
+        self.unknown1 = Encrypted(u"xoru1", io)
         self._raw__raw_equip_group = self._io.read_bytes(1)
         self._raw_equip_group = KaitaiStream.process_xor_many(self._raw__raw_equip_group, b"\xB7")
         io = KaitaiStream(BytesIO(self._raw_equip_group))
-        self.equip_group = Xoru1(io)
+        self.equip_group = Encrypted(u"xoru1", io)
         self._raw__raw_res_damage = self._io.read_bytes(1)
         self._raw_res_damage = KaitaiStream.process_xor_many(self._raw__raw_res_damage, b"\x07")
         io = KaitaiStream(BytesIO(self._raw_res_damage))
-        self.res_damage = Xorb1(io)
+        self.res_damage = Encrypted(u"xorb1", io)
         self._raw__raw_is_staff = self._io.read_bytes(1)
         self._raw_is_staff = KaitaiStream.process_xor_many(self._raw__raw_is_staff, b"\x78")
         io = KaitaiStream(BytesIO(self._raw_is_staff))
-        self.is_staff = Xorb1(io)
+        self.is_staff = Encrypted(u"xorb1", io)
         self._raw__raw_is_dagger = self._io.read_bytes(1)
         self._raw_is_dagger = KaitaiStream.process_xor_many(self._raw__raw_is_dagger, b"\xD7")
         io = KaitaiStream(BytesIO(self._raw_is_dagger))
-        self.is_dagger = Xorb1(io)
+        self.is_dagger = Encrypted(u"xorb1", io)
         self._raw__raw_is_breath = self._io.read_bytes(1)
         self._raw_is_breath = KaitaiStream.process_xor_many(self._raw__raw_is_breath, b"\x11")
         io = KaitaiStream(BytesIO(self._raw_is_breath))
-        self.is_breath = Xorb1(io)
+        self.is_breath = Encrypted(u"xorb1", io)
         self.padding = self._io.read_bytes(4)
 
 

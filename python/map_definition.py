@@ -7,12 +7,11 @@ from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, 
 if parse_version(ks_version) < parse_version('0.7'):
     raise Exception("Incompatible Kaitai Struct Python API: 0.7 or later is required, but you have %s" % (ks_version))
 
-from field_definition import FieldDefinition
 from xoru4 import Xoru4
-from map_position import MapPosition
+from field_definition import FieldDefinition
 from file_ptr import FilePtr
-from xorb1 import Xorb1
-from xoru1 import Xoru1
+from map_position import MapPosition
+from encrypted import Encrypted
 from unit_data import UnitData
 class MapDefinition(KaitaiStruct):
     """Top-level definition of a map. One instance appears in each map file at `$20`.
@@ -31,7 +30,7 @@ class MapDefinition(KaitaiStruct):
         self._raw__raw_highest_score = self._io.read_bytes(4)
         self._raw_highest_score = KaitaiStream.process_xor_many(self._raw__raw_highest_score, b"\xB1\x50\xE2\xA9")
         io = KaitaiStream(BytesIO(self._raw_highest_score))
-        self.highest_score = Xoru4(io)
+        self.highest_score = Encrypted(u"xoru4", io)
         self.field_ptr = FilePtr(self._io)
         self.player_pos_ptr = FilePtr(self._io)
         self.units_ptr = FilePtr(self._io)
@@ -46,15 +45,15 @@ class MapDefinition(KaitaiStruct):
         self._raw__raw_turns_to_win = self._io.read_bytes(1)
         self._raw_turns_to_win = KaitaiStream.process_xor_many(self._raw__raw_turns_to_win, b"\xFD")
         io = KaitaiStream(BytesIO(self._raw_turns_to_win))
-        self.turns_to_win = Xoru1(io)
+        self.turns_to_win = Encrypted(u"xoru1", io)
         self._raw__raw_last_enemy_phase = self._io.read_bytes(1)
         self._raw_last_enemy_phase = KaitaiStream.process_xor_many(self._raw__raw_last_enemy_phase, b"\xC7")
         io = KaitaiStream(BytesIO(self._raw_last_enemy_phase))
-        self.last_enemy_phase = Xorb1(io)
+        self.last_enemy_phase = Encrypted(u"xorb1", io)
         self._raw__raw_turns_to_defend = self._io.read_bytes(1)
         self._raw_turns_to_defend = KaitaiStream.process_xor_many(self._raw__raw_turns_to_defend, b"\xEC")
         io = KaitaiStream(BytesIO(self._raw_turns_to_defend))
-        self.turns_to_defend = Xoru1(io)
+        self.turns_to_defend = Encrypted(u"xoru1", io)
 
     @property
     def field(self):

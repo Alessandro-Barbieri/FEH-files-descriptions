@@ -7,10 +7,10 @@ from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, 
 if parse_version(ks_version) < parse_version('0.7'):
     raise Exception("Incompatible Kaitai Struct Python API: 0.7 or later is required, but you have %s" % (ks_version))
 
-from map_definition import MapDefinition
 from file_ptr import FilePtr
-from obj_list import ObjList
+from map_definition import MapDefinition
 from file_tag import FileTag
+from obj_list import ObjList
 class HsdarcBuffer(KaitaiStruct):
     """The contents of an HSDArc archive.
     
@@ -33,14 +33,16 @@ class HsdarcBuffer(KaitaiStruct):
         self.unknown2 = self._io.read_u4le()
         self.magic = self._io.ensure_fixed_contents(b"\x00\x00\x00\x00\x00\x00\x00\x00")
         _on = self.type
-        if _on == u"map":
+        if _on == u"weapon":
+            self.data = ObjList(u"weapon_class_definition", b"\x4F\x4C\x66\x6D\xEB\x17\xBA\xA7", self._io)
+        elif _on == u"enemy":
+            self.data = ObjList(u"enemy_definition", b"\x5C\x34\xC5\x9C\x11\x95\xCA\x62", self._io)
+        elif _on == u"terrain":
+            self.data = ObjList(u"terrain_definition", b"\x3C\x93\x7C\xA8\xA3\x2D\x25\x22", self._io)
+        elif _on == u"map":
             self.data = MapDefinition(self._io)
         elif _on == u"person":
             self.data = ObjList(u"hero_definition", b"\xE1\xB9\x3A\x3C\x79\xAB\x51\xDE", self._io)
-        elif _on == u"terrain":
-            self.data = ObjList(u"terrain_definition", b"\x3C\x93\x7C\xA8\xA3\x2D\x25\x22", self._io)
-        elif _on == u"weapon":
-            self.data = ObjList(u"weapon_class_definition", b"\x4F\x4C\x66\x6D\xEB\x17\xBA\xA7", self._io)
 
     @property
     def ptr_list(self):

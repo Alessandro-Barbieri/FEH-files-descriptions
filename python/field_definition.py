@@ -7,9 +7,9 @@ from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, 
 if parse_version(ks_version) < parse_version('0.7'):
     raise Exception("Incompatible Kaitai Struct Python API: 0.7 or later is required, but you have %s" % (ks_version))
 
-from xoru4 import Xoru4
-from xoru1 import Xoru1
 from crypt_string import CryptString
+from xoru4 import Xoru4
+from encrypted import Encrypted
 class FieldDefinition(KaitaiStruct):
     """Terrain data of a map. Graphical information is stored outside map files.
     
@@ -35,7 +35,7 @@ class FieldDefinition(KaitaiStruct):
         self._raw__raw_base_terrain = self._io.read_bytes(1)
         self._raw_base_terrain = KaitaiStream.process_xor_many(self._raw__raw_base_terrain, b"\x41")
         io = KaitaiStream(BytesIO(self._raw_base_terrain))
-        self.base_terrain = Xoru1(io)
+        self.base_terrain = Encrypted(u"xoru1", io)
         self.padding = self._io.read_bytes(7)
         self._raw_terrain = self._io.read_bytes((self.height.data * self.width.data))
         self.terrain = KaitaiStream.process_xor_many(self._raw_terrain, b"\xA1")

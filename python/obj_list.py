@@ -7,10 +7,11 @@ from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, 
 if parse_version(ks_version) < parse_version('0.7'):
     raise Exception("Incompatible Kaitai Struct Python API: 0.7 or later is required, but you have %s" % (ks_version))
 
-from xoru8 import Xoru8
 from hero_definition import HeroDefinition
-from file_ptr import FilePtr
+from xoru8 import Xoru8
 from terrain_definition import TerrainDefinition
+from enemy_definition import EnemyDefinition
+from file_ptr import FilePtr
 from weapon_class_definition import WeaponClassDefinition
 class ObjList(KaitaiStruct):
     """Generic object list. A variety of files consist of a single list, pointed
@@ -46,7 +47,9 @@ class ObjList(KaitaiStruct):
             self._m_object_list = [None] * (self.size.data)
             for i in range(self.size.data):
                 _on = self.type
-                if _on == u"hero_definition":
+                if _on == u"enemy_definition":
+                    self._m_object_list[i] = EnemyDefinition(self._io)
+                elif _on == u"hero_definition":
                     self._m_object_list[i] = HeroDefinition(self._io)
                 elif _on == u"terrain_definition":
                     self._m_object_list[i] = TerrainDefinition(self._io)

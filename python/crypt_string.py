@@ -30,15 +30,16 @@ class CryptString(KaitaiStruct):
         self.crypt_string_ptr = FilePtr(self._io)
 
     class CryptStringBuffer(KaitaiStruct):
-        def __init__(self, _io, _parent=None, _root=None):
+        def __init__(self, key, _io, _parent=None, _root=None):
             self._io = _io
             self._parent = _parent
             self._root = _root if _root else self
+            self.key = key
             self._read()
 
         def _read(self):
             self._raw__raw_buffer = self._io.read_bytes_term(0, False, True, True)
-            _process = DecryptString(b"\x81\x00\x80\xA4\x5A\x16\x6F\x78\x57\x81\x2D\xF7\xFC\x66\x0F\x27\x75\x35\xB4\x34\x10\xEE\xA2\xDB\xCC\xE3\x35\x99\x43\x48\xD2\xBB\x93\xC1")
+            _process = DecryptString(self.key)
             self._raw_buffer = _process.decode(self._raw__raw_buffer)
             io = KaitaiStream(BytesIO(self._raw_buffer))
             self.buffer = self._root.String(io, self, self._root)
@@ -64,7 +65,11 @@ class CryptString(KaitaiStruct):
         if self.crypt_string_ptr.offset != 0:
             _pos = self._io.pos()
             self._io.seek((self.crypt_string_ptr.offset + 32))
-            self._m_crypt_string = self._root.CryptStringBuffer(self._io, self, self._root)
+            _on = self.cipher
+            if _on == u"ID":
+                self._m_crypt_string = self._root.CryptStringBuffer(b"\x81\x00\x80\xA4\x5A\x16\x6F\x78\x57\x81\x2D\xF7\xFC\x66\x0F\x27\x75\x35\xB4\x34\x10\xEE\xA2\xDB\xCC\xE3\x35\x99\x43\x48\xD2\xBB\x93\xC1", self._io, self, self._root)
+            elif _on == u"NONE":
+                self._m_crypt_string = self._root.CryptStringBuffer(b"\x00", self._io, self, self._root)
             self._io.seek(_pos)
 
         return self._m_crypt_string if hasattr(self, '_m_crypt_string') else None
