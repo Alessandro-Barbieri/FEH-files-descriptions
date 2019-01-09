@@ -8,11 +8,11 @@ if parse_version(ks_version) < parse_version('0.7'):
     raise Exception("Incompatible Kaitai Struct Python API: 0.7 or later is required, but you have %s" % (ks_version))
 
 from crypt_string import CryptString
-from magic_element import MagicElement
 from stats_tuple import StatsTuple
 from file_ptr import FilePtr
 from xorb1 import Xorb1
 from encrypted import Encrypted
+from magic_element import MagicElement
 from weapon_index import WeaponIndex
 from move_index import MoveIndex
 from legendary_info import LegendaryInfo

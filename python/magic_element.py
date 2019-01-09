@@ -28,6 +28,6 @@ class MagicElement(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.element = self._root.MagicElementEnum(self._io.read_u1())
+        self.index = self._root.MagicElementEnum(self._io.read_u1())
 
 

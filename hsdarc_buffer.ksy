@@ -43,7 +43,7 @@ seq:
     type: u4
   - id: unknown2
     type: u4
-  - id: magic
+  - id: magic_bytes
     contents: [0x00,0x00,0x00,0x00,0x00,0x00,0x00,0x00]
     doc: |
        `0` on HSDArc archive files, `48 53 44 41 72 63 00 00` (`"HSDArc\0\0"`)

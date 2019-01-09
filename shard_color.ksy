@@ -3,7 +3,7 @@ meta:
   license: CC-BY-NC-SA-3.0
 doc-ref: https://feheroes.gamepedia.com/User:HertzDevil/Reverse-engineering_notes/Enumeration_types#shard_color
 seq:
-  - id: color
+  - id: index
     type: u1
     enum: shard_color_enum
 enums:

@@ -37,7 +37,7 @@ class HsdarcBuffer(KaitaiStruct):
         self.tag_list_length = self._io.read_u4le()
         self.unknown1 = self._io.read_u4le()
         self.unknown2 = self._io.read_u4le()
-        self.magic = self._io.ensure_fixed_contents(b"\x00\x00\x00\x00\x00\x00\x00\x00")
+        self.magic_bytes = self._io.ensure_fixed_contents(b"\x00\x00\x00\x00\x00\x00\x00\x00")
         _on = self.type
         if _on == u"skill":
             self.data = self._root.ObjList(u"skill_definition", b"\xAD\xE9\xDE\x4A\x07\xC7\xEC\x7F", self._io, self, self._root)

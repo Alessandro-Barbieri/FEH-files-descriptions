@@ -8,10 +8,10 @@ if parse_version(ks_version) < parse_version('0.7'):
     raise Exception("Incompatible Kaitai Struct Python API: 0.7 or later is required, but you have %s" % (ks_version))
 
 from crypt_string import CryptString
-from magic_element import MagicElement
 from stats_tuple import StatsTuple
 from xorb1 import Xorb1
 from encrypted import Encrypted
+from magic_element import MagicElement
 from badge_color import BadgeColor
 class SkillDefinition(KaitaiStruct):
     """All skills, including refined weapons and exclusive skill refinements, are

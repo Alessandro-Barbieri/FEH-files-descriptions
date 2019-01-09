@@ -26,6 +26,6 @@ class BadgeColor(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.color = self._root.BadgeColorEnum(self._io.read_u1())
+        self.index = self._root.BadgeColorEnum(self._io.read_u1())
 
 

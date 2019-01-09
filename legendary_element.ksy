@@ -3,7 +3,7 @@ meta:
   license: CC-BY-NC-SA-3.0
 doc-ref: https://feheroes.gamepedia.com/User:HertzDevil/Reverse-engineering_notes/Enumeration_types#legendary_element
 seq:
-  - id: element
+  - id: index
     type: u1
     enum: legendary_element_enum
 enums:
