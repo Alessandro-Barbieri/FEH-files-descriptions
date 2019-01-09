@@ -9,6 +9,7 @@ meta:
     - file_tag
     - hero_definition
     - map_definition
+    - skill_definition
     - terrain_definition
     - weapon_class_definition
   license:  CC-BY-NC-SA-3.0
@@ -55,6 +56,7 @@ seq:
         '"field"': obj_list('field_gfx_definition',[0x58,0xbc,0xdf,0xca,0x3c,0x08,0x90,0x1d])
         '"map"': map_definition
         '"person"': obj_list('hero_definition',[0xe1,0xb9,0x3a,0x3c,0x79,0xab,0x51,0xde])
+        '"skill"': obj_list('skill_definition',[0xad,0xe9,0xde,0x4a,0x07,0xc7,0xec,0x7f])
         '"terrain"': obj_list('terrain_definition',[0x3c,0x93,0x7c,0xa8,0xa3,0x2d,0x25,0x22])
         '"weapon"': obj_list('weapon_class_definition',[0x4f,0x4c,0x66,0x6d,0xeb,0x17,0xba,0xa7])
 instances:
@@ -114,6 +116,7 @@ types:
             '"enemy_definition"': enemy_definition
             '"field_gfx_definition"': field_gfx_definition
             '"hero_definition"': hero_definition
+            '"skill_definition"': skill_definition
             '"terrain_definition"': terrain_definition
             '"weapon_class_definition"': weapon_class_definition
         pos: list_ptr.offset + 0x20

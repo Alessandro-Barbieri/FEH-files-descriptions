@@ -15,6 +15,7 @@ from encrypted import Encrypted
 from hero_definition import HeroDefinition
 from terrain_definition import TerrainDefinition
 from field_gfx_definition import FieldGfxDefinition
+from skill_definition import SkillDefinition
 from file_tag import FileTag
 class HsdarcBuffer(KaitaiStruct):
     """The contents of an HSDArc archive.
@@ -38,7 +39,9 @@ class HsdarcBuffer(KaitaiStruct):
         self.unknown2 = self._io.read_u4le()
         self.magic = self._io.ensure_fixed_contents(b"\x00\x00\x00\x00\x00\x00\x00\x00")
         _on = self.type
-        if _on == u"weapon":
+        if _on == u"skill":
+            self.data = self._root.ObjList(u"skill_definition", b"\xAD\xE9\xDE\x4A\x07\xC7\xEC\x7F", self._io, self, self._root)
+        elif _on == u"weapon":
             self.data = self._root.ObjList(u"weapon_class_definition", b"\x4F\x4C\x66\x6D\xEB\x17\xBA\xA7", self._io, self, self._root)
         elif _on == u"enemy":
             self.data = self._root.ObjList(u"enemy_definition", b"\x5C\x34\xC5\x9C\x11\x95\xCA\x62", self._io, self, self._root)
@@ -89,6 +92,8 @@ class HsdarcBuffer(KaitaiStruct):
                         self._m_object_list[i] = FieldGfxDefinition(self._io)
                     elif _on == u"weapon_class_definition":
                         self._m_object_list[i] = WeaponClassDefinition(self._io)
+                    elif _on == u"skill_definition":
+                        self._m_object_list[i] = SkillDefinition(self._io)
                     elif _on == u"hero_definition":
                         self._m_object_list[i] = HeroDefinition(self._io)
                     elif _on == u"enemy_definition":
