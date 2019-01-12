@@ -32,6 +32,7 @@ class SkillDefinition(KaitaiStruct):
         self.name_id = CryptString(u"ID", self._io)
         self.desc_id = CryptString(u"ID", self._io)
         self.refine_id = CryptString(u"ID", self._io)
+        self.beast_effect_id = CryptString(u"ID", self._io)
         self.prerequisites = [None] * (2)
         for i in range(2):
             self.prerequisites[i] = CryptString(u"ID", self._io)

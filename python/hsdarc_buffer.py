@@ -13,9 +13,9 @@ from file_ptr import FilePtr
 from weapon_class_definition import WeaponClassDefinition
 from encrypted import Encrypted
 from hero_definition import HeroDefinition
+from skill_definition import SkillDefinition
 from terrain_definition import TerrainDefinition
 from field_gfx_definition import FieldGfxDefinition
-from skill_definition import SkillDefinition
 from file_tag import FileTag
 class HsdarcBuffer(KaitaiStruct):
     """The contents of an HSDArc archive.

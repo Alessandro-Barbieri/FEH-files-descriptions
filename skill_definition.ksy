@@ -38,6 +38,8 @@ seq:
     doc: |
         Internal string identifier of the skill that gives rise to the refined
         skill effect, e.g. SID_強化共有R.
+  - id: beast_effect_id
+    type: crypt_string('ID')
   - id: prerequisites
     type: crypt_string('ID')
     repeat: expr
