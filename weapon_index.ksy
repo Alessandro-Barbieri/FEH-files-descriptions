@@ -27,3 +27,7 @@ enums:
     16: blue_breath
     17: green_breath
     18: colorless_breath
+    19: red_beast
+    20: blue_beast
+    21: green_beast
+    22: colorless_beast

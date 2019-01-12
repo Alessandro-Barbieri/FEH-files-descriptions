@@ -12,8 +12,8 @@ from stats_tuple import StatsTuple
 from xorb1 import Xorb1
 from encrypted import Encrypted
 from magic_element import MagicElement
-from weapon_index import WeaponIndex
 from move_index import MoveIndex
+from weapon_index import WeaponIndex
 class EnemyDefinition(KaitaiStruct):
     """The files at `Common/SRPG/Enemy/` define data for enemy-only units. This
     means enemies have base stats and GPs too.

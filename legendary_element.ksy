@@ -13,3 +13,4 @@ enums:
     2: water
     3: wind
     4: earth
+    5: light

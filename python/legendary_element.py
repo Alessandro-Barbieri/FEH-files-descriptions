@@ -20,6 +20,7 @@ class LegendaryElement(KaitaiStruct):
         water = 2
         wind = 3
         earth = 4
+        light = 5
     def __init__(self, _io, _parent=None, _root=None):
         self._io = _io
         self._parent = _parent

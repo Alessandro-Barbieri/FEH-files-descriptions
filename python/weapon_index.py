@@ -34,6 +34,10 @@ class WeaponIndex(KaitaiStruct):
         blue_breath = 16
         green_breath = 17
         colorless_breath = 18
+        red_beast = 19
+        blue_beast = 20
+        green_beast = 21
+        colorless_beast = 22
     def __init__(self, _io, _parent=None, _root=None):
         self._io = _io
         self._parent = _parent

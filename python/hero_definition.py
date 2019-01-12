@@ -13,8 +13,8 @@ from file_ptr import FilePtr
 from xorb1 import Xorb1
 from encrypted import Encrypted
 from magic_element import MagicElement
-from weapon_index import WeaponIndex
 from move_index import MoveIndex
+from weapon_index import WeaponIndex
 from legendary_info import LegendaryInfo
 class HeroDefinition(KaitaiStruct):
     """Complete definition of a hero.
