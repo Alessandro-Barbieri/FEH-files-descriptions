@@ -7,12 +7,12 @@ from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, 
 if parse_version(ks_version) < parse_version('0.7'):
     raise Exception("Incompatible Kaitai Struct Python API: 0.7 or later is required, but you have %s" % (ks_version))
 
-from crypt_string import CryptString
 from stats_tuple import StatsTuple
 from xorb1 import Xorb1
 from encrypted import Encrypted
 from magic_element import MagicElement
 from badge_color import BadgeColor
+from crypt_string import CryptString
 class SkillDefinition(KaitaiStruct):
     """All skills, including refined weapons and exclusive skill refinements, are
     defined in the files at Common/SRPG/Skill/.
@@ -47,19 +47,19 @@ class SkillDefinition(KaitaiStruct):
         self.skill_params = StatsTuple(self._io)
         self.refine_stats = StatsTuple(self._io)
         self._raw__raw_num_id = self._io.read_bytes(4)
-        self._raw_num_id = KaitaiStream.process_xor_many(self._raw__raw_num_id, b"\x0C\x41\xD3\x90")
+        self._raw_num_id = KaitaiStream.process_xor_many(self._raw__raw_num_id, b"\x23\x3A\xA5\xC6")
         io = KaitaiStream(BytesIO(self._raw_num_id))
         self.num_id = Encrypted(u"xoru4", io)
         self._raw__raw_sort_id = self._io.read_bytes(4)
-        self._raw_sort_id = KaitaiStream.process_xor_many(self._raw__raw_sort_id, b"\x23\x3A\xA5\xC6")
+        self._raw_sort_id = KaitaiStream.process_xor_many(self._raw__raw_sort_id, b"\xAC\xF8\xDB\x8D")
         io = KaitaiStream(BytesIO(self._raw_sort_id))
         self.sort_id = Encrypted(u"xoru4", io)
         self._raw__raw_icon_id = self._io.read_bytes(4)
-        self._raw_icon_id = KaitaiStream.process_xor_many(self._raw__raw_icon_id, b"\xAC\xF8\xDB\x8D")
+        self._raw_icon_id = KaitaiStream.process_xor_many(self._raw__raw_icon_id, b"\x73\x21\xDF\xC6")
         io = KaitaiStream(BytesIO(self._raw_icon_id))
         self.icon_id = Encrypted(u"xoru4", io)
         self._raw__raw_wep_equip = self._io.read_bytes(4)
-        self._raw_wep_equip = KaitaiStream.process_xor_many(self._raw__raw_wep_equip, b"\x73\x21\xDF\xC6")
+        self._raw_wep_equip = KaitaiStream.process_xor_many(self._raw__raw_wep_equip, b"\x28\x98\xB9\x35")
         io = KaitaiStream(BytesIO(self._raw_wep_equip))
         self.wep_equip = Encrypted(u"xoru4", io)
         self._raw__raw_mov_equip = self._io.read_bytes(4)

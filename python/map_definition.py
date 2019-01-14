@@ -7,12 +7,12 @@ from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, 
 if parse_version(ks_version) < parse_version('0.7'):
     raise Exception("Incompatible Kaitai Struct Python API: 0.7 or later is required, but you have %s" % (ks_version))
 
-from crypt_string import CryptString
 from file_ptr import FilePtr
 from xorb1 import Xorb1
-from unit_data import UnitData
 from encrypted import Encrypted
 from map_position import MapPosition
+from unit_data import UnitData
+from crypt_string import CryptString
 class MapDefinition(KaitaiStruct):
     """Top-level definition of a map. One instance appears in each map file at `$20`.
     

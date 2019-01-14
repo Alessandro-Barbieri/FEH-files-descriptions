@@ -7,11 +7,11 @@ from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, 
 if parse_version(ks_version) < parse_version('0.7'):
     raise Exception("Incompatible Kaitai Struct Python API: 0.7 or later is required, but you have %s" % (ks_version))
 
-from crypt_string import CryptString
 from stats_tuple import StatsTuple
 from xorb1 import Xorb1
 from encrypted import Encrypted
 from map_position import MapPosition
+from crypt_string import CryptString
 class UnitData(KaitaiStruct):
     """Definition of a single unit placed on the map.
     
@@ -92,5 +92,6 @@ class UnitData(KaitaiStruct):
         self._raw_spawn_target_kills = KaitaiStream.process_xor_many(self._raw__raw_spawn_target_kills, b"\x5B")
         io = KaitaiStream(BytesIO(self._raw_spawn_target_kills))
         self.spawn_target_kills = Encrypted(u"xors1", io)
+        self.padding2 = self._io.read_bytes(4)
 
 

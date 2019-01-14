@@ -43,7 +43,9 @@ class CryptString(KaitaiStruct):
             self._raw_buffer = _process.decode(self._raw__raw_buffer)
             io = KaitaiStream(BytesIO(self._raw_buffer))
             self.buffer = self._root.String(io, self, self._root)
-            self.padding = self._io.read_bytes(((8 - self._io.pos()) % 8))
+            if not (self._io.is_eof()):
+                self.padding = self._io.read_bytes(((8 - self._io.pos()) % 8))
+
 
 
     class String(KaitaiStruct):
@@ -55,6 +57,20 @@ class CryptString(KaitaiStruct):
 
         def _read(self):
             self.value = (self._io.read_bytes_full()).decode(u"UTF-8")
+
+
+    class StringBuffer(KaitaiStruct):
+        def __init__(self, _io, _parent=None, _root=None):
+            self._io = _io
+            self._parent = _parent
+            self._root = _root if _root else self
+            self._read()
+
+        def _read(self):
+            self.buffer = (KaitaiStream.bytes_terminate(self._io.read_bytes_full(), 0, False)).decode(u"UTF-8")
+            if not (self._io.is_eof()):
+                self.padding = self._io.read_bytes(((8 - self._io.pos()) % 8))
+
 
 
     @property
@@ -69,7 +85,7 @@ class CryptString(KaitaiStruct):
             if _on == u"ID":
                 self._m_crypt_string = self._root.CryptStringBuffer(b"\x81\x00\x80\xA4\x5A\x16\x6F\x78\x57\x81\x2D\xF7\xFC\x66\x0F\x27\x75\x35\xB4\x34\x10\xEE\xA2\xDB\xCC\xE3\x35\x99\x43\x48\xD2\xBB\x93\xC1", self._io, self, self._root)
             elif _on == u"NONE":
-                self._m_crypt_string = self._root.CryptStringBuffer(b"\x00", self._io, self, self._root)
+                self._m_crypt_string = self._root.StringBuffer(self._io, self, self._root)
             self._io.seek(_pos)
 
         return self._m_crypt_string if hasattr(self, '_m_crypt_string') else None

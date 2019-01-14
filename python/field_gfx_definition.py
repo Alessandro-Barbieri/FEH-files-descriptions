@@ -7,8 +7,8 @@ from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, 
 if parse_version(ks_version) < parse_version('0.7'):
     raise Exception("Incompatible Kaitai Struct Python API: 0.7 or later is required, but you have %s" % (ks_version))
 
-from crypt_string import CryptString
 from file_ptr import FilePtr
+from crypt_string import CryptString
 class FieldGfxDefinition(KaitaiStruct):
     """The files at `Common/SRPG/Field/` define the graphical assets maps use.
     
@@ -25,7 +25,8 @@ class FieldGfxDefinition(KaitaiStruct):
         self.map_id = CryptString(u"ID", self._io)
         self.wall_ptr = FilePtr(self._io)
         self.backdrop_ptr = FilePtr(self._io)
-        self.overlay_ptr = FilePtr(self._io)
+        self.overlay1_ptr = FilePtr(self._io)
+        self.overlay2_ptr = FilePtr(self._io)
         self.anim = CryptString(u"NONE", self._io)
 
     class GfxResource(KaitaiStruct):
@@ -57,10 +58,7 @@ class FieldGfxDefinition(KaitaiStruct):
         if self.wall_ptr.offset != 0:
             _pos = self._io.pos()
             self._io.seek((self.wall_ptr.offset + 32))
-            self._m_wall = [None] * (1)
-            for i in range(1):
-                self._m_wall[i] = self._root.GfxResource(self._io, self, self._root)
-
+            self._m_wall = self._root.GfxResource(self._io, self, self._root)
             self._io.seek(_pos)
 
         return self._m_wall if hasattr(self, '_m_wall') else None
@@ -74,29 +72,37 @@ class FieldGfxDefinition(KaitaiStruct):
         if self.backdrop_ptr.offset != 0:
             _pos = self._io.pos()
             self._io.seek((self.backdrop_ptr.offset + 32))
-            self._m_backdrop = [None] * (1)
-            for i in range(1):
-                self._m_backdrop[i] = self._root.GfxResource(self._io, self, self._root)
-
+            self._m_backdrop = self._root.GfxResource(self._io, self, self._root)
             self._io.seek(_pos)
 
         return self._m_backdrop if hasattr(self, '_m_backdrop') else None
 
     @property
-    def overlay(self):
+    def overlay1(self):
         """The sprites for the map's overlays. Up to 2 can be defined."""
-        if hasattr(self, '_m_overlay'):
-            return self._m_overlay if hasattr(self, '_m_overlay') else None
+        if hasattr(self, '_m_overlay1'):
+            return self._m_overlay1 if hasattr(self, '_m_overlay1') else None
 
-        if self.overlay_ptr.offset != 0:
+        if self.overlay1_ptr.offset != 0:
             _pos = self._io.pos()
-            self._io.seek((self.overlay_ptr.offset + 32))
-            self._m_overlay = [None] * (2)
-            for i in range(2):
-                self._m_overlay[i] = self._root.GfxResource(self._io, self, self._root)
-
+            self._io.seek((self.overlay1_ptr.offset + 32))
+            self._m_overlay1 = self._root.GfxResource(self._io, self, self._root)
             self._io.seek(_pos)
 
-        return self._m_overlay if hasattr(self, '_m_overlay') else None
+        return self._m_overlay1 if hasattr(self, '_m_overlay1') else None
+
+    @property
+    def overlay2(self):
+        """The sprites for the map's overlays. Up to 2 can be defined."""
+        if hasattr(self, '_m_overlay2'):
+            return self._m_overlay2 if hasattr(self, '_m_overlay2') else None
+
+        if self.overlay2_ptr.offset != 0:
+            _pos = self._io.pos()
+            self._io.seek((self.overlay2_ptr.offset + 32))
+            self._m_overlay2 = self._root.GfxResource(self._io, self, self._root)
+            self._io.seek(_pos)
+
+        return self._m_overlay2 if hasattr(self, '_m_overlay2') else None
 
 

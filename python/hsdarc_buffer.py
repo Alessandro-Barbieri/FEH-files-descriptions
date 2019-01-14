@@ -7,15 +7,15 @@ from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, 
 if parse_version(ks_version) < parse_version('0.7'):
     raise Exception("Incompatible Kaitai Struct Python API: 0.7 or later is required, but you have %s" % (ks_version))
 
+from hero_definition import HeroDefinition
 from enemy_definition import EnemyDefinition
 from map_definition import MapDefinition
+from skill_definition import SkillDefinition
+from field_gfx_definition import FieldGfxDefinition
 from file_ptr import FilePtr
 from weapon_class_definition import WeaponClassDefinition
 from encrypted import Encrypted
-from hero_definition import HeroDefinition
-from skill_definition import SkillDefinition
 from terrain_definition import TerrainDefinition
-from field_gfx_definition import FieldGfxDefinition
 from file_tag import FileTag
 class HsdarcBuffer(KaitaiStruct):
     """The contents of an HSDArc archive.

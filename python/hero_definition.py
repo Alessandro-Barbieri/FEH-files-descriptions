@@ -7,15 +7,15 @@ from kaitaistruct import __version__ as ks_version, KaitaiStruct, KaitaiStream, 
 if parse_version(ks_version) < parse_version('0.7'):
     raise Exception("Incompatible Kaitai Struct Python API: 0.7 or later is required, but you have %s" % (ks_version))
 
-from crypt_string import CryptString
 from stats_tuple import StatsTuple
+from legendary_info import LegendaryInfo
 from file_ptr import FilePtr
 from xorb1 import Xorb1
 from encrypted import Encrypted
 from magic_element import MagicElement
 from move_index import MoveIndex
 from weapon_index import WeaponIndex
-from legendary_info import LegendaryInfo
+from crypt_string import CryptString
 class HeroDefinition(KaitaiStruct):
     """Complete definition of a hero.
     

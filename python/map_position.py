@@ -29,6 +29,5 @@ class MapPosition(KaitaiStruct):
         self._raw_y = KaitaiStream.process_xor_many(self._raw__raw_y, b"\xB2\x28")
         io = KaitaiStream(BytesIO(self._raw_y))
         self.y = Encrypted(u"xoru2", io)
-        self.padding = self._io.read_bytes(4)
 
 
