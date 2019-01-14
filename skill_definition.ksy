@@ -92,14 +92,14 @@ seq:
   - id: num_id
     size: 4
     type: encrypted('xoru4')
-    process: xor([0x0c,0x41,0xd3,0x90])
+    process: xor([0x23,0x3a,0xa5,0xc6])
     doc: |
       A unique increasing index for every skill, added to `0x10000000` for
       refined weapons.
   - id: sort_id
     size: 4
     type: encrypted('xoru4')
-    process: xor([0x23,0x3a,0xa5,0xc6])
+    process: xor([0xac,0xf8,0xdb,0x8d])
     doc: |
       The internal sort value used in places such as the skill inheritance menu
       to order skills within the same category according to their skill
@@ -107,14 +107,14 @@ seq:
   - id: icon_id
     size: 4
     type: encrypted('xoru4')
-    process: xor([0xac,0xf8,0xdb,0x8d])
+    process: xor([0x73,0x21,0xdf,0xc6])
     doc: |
       The icon index of the skill, referring to the files
       `UI/Skill_Passive*.png`.
   - id: wep_equip
     size: 4
     type: encrypted('xoru4')
-    process: xor([0x73,0x21,0xdf,0xc6])
+    process: xor([0x28,0x98,0xb9,0x35])
     doc: |
       A bitmask indexed by `weapon_index`, with bits set for weapon classes
       that can equip the current skill.
