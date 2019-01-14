@@ -17,5 +17,3 @@ seq:
     type: encrypted('xoru2')
     process: xor([0xB2,0x28])
     doc: Y position, 0 for the bottom-most row.
-  - id: padding
-    size: 4
