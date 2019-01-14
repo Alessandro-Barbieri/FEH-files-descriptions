@@ -1,8 +1,8 @@
 meta:
   id: legendary_info
   imports:
-    - stats_tuple
     - legendary_element
+    - stats_tuple
   license: CC-BY-NC-SA-3.0
 doc: The struct that defines the element and ally boosts of a Legendary Hero.
 doc-ref: https://feheroes.gamepedia.com/User:HertzDevil/Reverse-engineering_notes#legendary_info

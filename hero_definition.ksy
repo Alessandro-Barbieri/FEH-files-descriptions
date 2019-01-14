@@ -3,12 +3,12 @@ meta:
   imports:
     - crypt_string
     - encrypted
-    - weapon_index
-    - stats_tuple
+    - legendary_info
     - file_ptr
     - magic_element
     - move_index
-    - legendary_info
+    - stats_tuple
+    - weapon_index
   endian: le
   license: CC-BY-NC-SA-3.0
 doc: Complete definition of a hero.
