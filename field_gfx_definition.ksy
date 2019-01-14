@@ -16,7 +16,9 @@ seq:
     type: file_ptr
   - id: backdrop_ptr
     type: file_ptr
-  - id: overlay_ptr
+  - id: overlay1_ptr
+    type: file_ptr
+  - id: overlay2_ptr
     type: file_ptr
   - id: anim
     type: crypt_string('NONE')
@@ -25,8 +27,6 @@ instances:
     type: gfx_resource
     pos: wall_ptr.offset+ 0x20
     if: wall_ptr.offset != 0
-    repeat: expr
-    repeat-expr: 1
     doc: |
       The sprites for wall terrains. Walls are only drawn if at least one wall
       tile is breakable; otherwise, wall graphics are directly embedded in the
@@ -35,15 +35,16 @@ instances:
     type: gfx_resource
     pos: backdrop_ptr.offset+ 0x20
     if: backdrop_ptr.offset != 0
-    repeat: expr
-    repeat-expr: 1
     doc: The sprite for the map's backdrop.
-  overlay:
+  overlay1:
     type: gfx_resource
-    pos: overlay_ptr.offset+ 0x20
-    if: overlay_ptr.offset != 0
-    repeat: expr
-    repeat-expr: 2
+    pos: overlay1_ptr.offset+ 0x20
+    if: overlay1_ptr.offset != 0
+    doc: The sprites for the map's overlays. Up to 2 can be defined.
+  overlay2:
+    type: gfx_resource
+    pos: overlay2_ptr.offset+ 0x20
+    if: overlay2_ptr.offset != 0
     doc: The sprites for the map's overlays. Up to 2 can be defined.
 types:
   gfx_resource:
