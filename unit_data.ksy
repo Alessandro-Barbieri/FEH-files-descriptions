@@ -3,8 +3,8 @@ meta:
   imports:
     - encrypted
     - crypt_string
-    - stats_tuple
     - map_position
+    - stats_tuple
     - xorb1
   endian: le
   license: CC-BY-NC-SA-3.0
@@ -143,3 +143,5 @@ seq:
     doc: |
       If not -`1`, this unit spawns only when at least `spawn_target_kills`
       units with internal identifier `spawn_check` are defeated.
+  - id: padding2
+    size: 4
