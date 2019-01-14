@@ -8,9 +8,9 @@ from enum import Enum
 if parse_version(ks_version) < parse_version('0.7'):
     raise Exception("Incompatible Kaitai Struct Python API: 0.7 or later is required, but you have %s" % (ks_version))
 
+from weapon_index import WeaponIndex
 from xorb1 import Xorb1
 from encrypted import Encrypted
-from weapon_index import WeaponIndex
 from crypt_string import CryptString
 class WeaponClassDefinition(KaitaiStruct):
     """The file `assets/Common/SRPG/Weapon.bin` defines the weapon classes used by

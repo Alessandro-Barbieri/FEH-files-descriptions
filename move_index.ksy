@@ -3,7 +3,7 @@ meta:
   license: CC-BY-NC-SA-3.0
 doc-ref: https://feheroes.gamepedia.com/User:HertzDevil/Reverse-engineering_notes/Enumeration_types#move_index
 seq:
-  - id: index
+  - id: idx
     type: u1
     enum: move_index_enum
 enums:

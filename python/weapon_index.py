@@ -45,6 +45,6 @@ class WeaponIndex(KaitaiStruct):
         self._read()
 
     def _read(self):
-        self.index = self._root.WeaponIndexEnum(self._io.read_u1())
+        self.idx = self._root.WeaponIndexEnum(self._io.read_u1())
 
 
